@@ -22,13 +22,26 @@ atividades = {
     "Música": "musica",
     "Dança": "danca",
 }
-for atividade  in atividades.values():
-    print(f"Alunos da atividade {atividade}\n")
-    for aluno in aula[atividade]: 
-        for aluno in sala["sala1"]:
-            if aluno in sala["sala1"]:
-             print(f"Sala 1:{aluno} ")
 # Listar alunis em cada atividade por sala
+
+for atividade  in atividades.values():
+    atividade_sala1 = []
+    atividade_sala2 = []
+    print("#" * 40)
+    print(f"Alunos da atividade {atividade}")
+    print("#" * 40)
+    for aluno in aula[atividade]:
+        if aluno in sala["sala1"]:
+                atividade_sala1.append(aluno)
+        elif aluno in sala["sala2"]:
+                atividade_sala2.append(aluno)        
+    #    for index in sala["sala1"]:
+    #         if aluno in index:
+    #             atividade_sala1.append(aluno)
+    print(f'Sala1, {atividade_sala1}') 
+    print(f'Sala2, {atividade_sala2} \n')     
+    print()
+    print("-" * 40, '\n')
 
 #print(atividades["Inglês"])
 
