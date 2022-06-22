@@ -7,7 +7,8 @@
 Imprimir a lista de crianças agrupadas por salas que frequentas cada uma das 
 atividades.
 """
-__Version__ = "0.1.0"
+__Version__ = "0.1.1"
+# Dados
 sala = {
     "sala1": ["Erick", "Maia", "Gustavo", "Manuel", "Sofia", "Joana"],
     "sala2": ["Joao", "Antonio", "Carlos", "Maria", "Isolda"]
@@ -22,6 +23,7 @@ atividades = {
     "Música": "musica",
     "Dança": "danca",
 }
+
 # Listar alunis em cada atividade por sala
 
 for atividade  in atividades.values():
@@ -35,33 +37,8 @@ for atividade  in atividades.values():
                 atividade_sala1.append(aluno)
         elif aluno in sala["sala2"]:
                 atividade_sala2.append(aluno)        
-    #    for index in sala["sala1"]:
-    #         if aluno in index:
-    #             atividade_sala1.append(aluno)
     print(f'Sala1, {atividade_sala1}') 
     print(f'Sala2, {atividade_sala2} \n')     
     print()
     print("-" * 40, '\n')
 
-#print(atividades["Inglês"])
-
-# for nome_atividade in atividades:
-
-#     print(f"Alunos da atividade {nome_atividade}\n")
-#     print("-" * 40)
-
-#     atividade_sala1 =[]
-#     atividade_sala2 =[]
-
-#     for aluno in sala["sala1"]:
-#         print(aluno)   
-#         if aluno in sala["sala1"]:
-#             atividade_sala1.append(aluno)
-#         elif aluno in sala["sala2"]:
-#             atividade_sala2.append(aluno) 
-
-#     print(f"Sala1", atividade_sala1)
-#     print(f"Sala2", atividade_sala2)
-# # 
-#     # print()
-#     # print("#" * 40)
