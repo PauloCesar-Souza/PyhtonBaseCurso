@@ -16,14 +16,38 @@ Execução:
     ou
     ./hello.py
 """
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __author__ = "Paulo Cesar"
 __licence__ = "Unlicence"
 # Dunder - Identificador
 
+#from ast import arguments
 import os
+import sys
+
+
+arguments = {"lang": None, "count": 1}
+
+for arg in sys.argv[1:]:
+    # TODO: Tratar Value Error
+    key, value = arg.split("=")
+    key = key.lstrip("-").strip()
+    value = value.strip()
+    if key not in arguments:
+        print(f"Invalid Option '{key}'")
+        sys.exit()
+    arguments[key] = value      # type: ignore
+
 # padrão snake case -- Pascal Case : CurrentLanguage
-current_language = os.getenv("LANG", "en_US")[:5]       
+current_language = arguments["lang"]
+if current_language is None:
+    # TODO: Usar repetição 
+    if "LANG" in os.environ:
+        current_language = os.getenv("LANG") 
+    else:
+        current_language = input("Choose a language:")
+
+current_language = current_language[:5]   
 
 msg = {
     "en_US":"Hello, Word!",
@@ -31,10 +55,9 @@ msg = {
     "it_IT":"Ciao, Mondo!",
     "es_SP":"Hola, Mundo!",
     "fr_FR":"Bonjour, Monde!",
-
 } 
 
-print(msg[current_language])
+print(msg[current_language] * int(arguments["count"]))
 
 # sets (hash Table) - 0(1) - constante
 # dicts (Hash Table)
@@ -49,4 +72,4 @@ print(msg[current_language])
 # elif current_language == "fr_FR":
 #     msg = "Bonjour Monde!"        
 
-print(msg)   # Este programa imprime Hello world
+#print(msg)   # Este programa imprime Hello world
