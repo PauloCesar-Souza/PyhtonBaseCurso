@@ -23,15 +23,17 @@ operação: sum
 n1: 5
 n2: 4
 9
+
+Os resultados serão salvos em ' infixcalc.log'
+
 """
 
 __version__ = "0.1.0"
 
-from logging.config import valid_ident
+import os
+from sqlite3 import Timestamp
 import sys
-
-from traitlets import validate
-
+from datetime import datetime
 arguments = sys.argv[1:]
 
 # TODO: Exceptions
@@ -82,5 +84,14 @@ elif operation == "mul":
     result = n1 * n2     
 elif operation == "div":
     result = n1 / n2      
+
+path = os.curdir
+filepath = os.path.join(path, "infixcalc.log")   
+timestamp = datetime.now().isoformat()
+user = os.getenv('USER', 'anonymuos')
+
+with open(filepath, "a") as file_:
+    file_.write(f"({timestamp} - {user} - {operation},{n1},{n2} = {result}\n")
+
       
 print(f"O resultado é {result}")
